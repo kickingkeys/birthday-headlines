@@ -41,36 +41,39 @@ export default function MilestoneCard({ age, year, connection, headline, alignme
           boxShadow: "0 8px 25px rgba(0,0,0,0.15)",
         }}
         transition={{ duration: 0.3 }}
-        className="bg-white rounded-lg p-8 shadow-sm border border-gray-100 max-w-md mx-auto md:mx-0"
-        style={{ boxShadow: "0 2px 10px rgba(0,0,0,0.1)" }}
+        className="p-8 shadow-sm border border-gray-200 max-w-md mx-auto md:mx-0"
+        style={{
+          background: '#FAF8F4',
+          color: '#222222',
+          borderRadius: '22px',
+          boxShadow: "0 2px 10px rgba(0,0,0,0.07)",
+        }}
       >
-        {/* Age Circle */}
-        <div className={`flex ${alignment === "right" ? "justify-start" : "justify-end md:justify-start"} mb-4`}>
-          <div className="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center">
-            <span className="text-lg font-medium text-gray-800">{age}</span>
-          </div>
+        {/* Age Label */}
+        <div className={alignment === "left" ? "mb-2 text-right md:text-right" : "mb-2 text-left md:text-left"}>
+          <span className="text-base font-medium tracking-wide" style={{ color: '#222222' }}>
+            Age: <span style={{ color: '#EE8838' }}>{age}</span>
+          </span>
         </div>
 
         {/* Year */}
-        <p className="text-gray-500 text-sm mb-6 font-medium">{year}</p>
+        <p className="text-gray-500 text-sm mb-4 font-medium" style={{ color: '#888888' }}>{year}</p>
 
         {/* Connection Quote */}
-        <blockquote className="text-gray-800 font-serif italic text-lg leading-relaxed mb-6">"{connection}"</blockquote>
+        <blockquote className="font-serif italic text-lg leading-relaxed mb-6" style={{ color: '#222222' }}>
+          "{connection}"
+        </blockquote>
 
         {/* Original Headline */}
-        <p className="text-gray-500 text-sm leading-relaxed">
-          <a href={headline.url} target="_blank" rel="noopener noreferrer" className="underline">
+        <p className="text-sm leading-relaxed" style={{ color: '#444444' }}>
+          <a href={headline.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-700 transition-colors" style={{ color: '#222222' }}>
             {headline.headline}
           </a>
         </p>
       </motion.div>
 
       {/* Connection dot to timeline */}
-      <div
-        className={`absolute top-16 w-3 h-3 bg-gray-400 rounded-full hidden md:block ${
-          alignment === "left" ? "-right-6" : "-left-6"
-        }`}
-      />
+      {/* Removed gray dot as requested */}
     </motion.div>
   )
 }

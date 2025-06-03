@@ -45,7 +45,7 @@ export default function TimelineLoader({ birthDate }: TimelineLoaderProps) {
   }, [currentPhase, phases.length])
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-white">
+    <div className="flex items-center justify-center min-h-screen" style={{ backgroundColor: '#FAF8F4', color: '#222222' }}>
       <div className="text-center">
         <AnimatePresence mode="wait">
           <motion.p
@@ -54,35 +54,12 @@ export default function TimelineLoader({ birthDate }: TimelineLoaderProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-xl md:text-2xl font-serif text-gray-700 italic"
+            className="text-xl md:text-2xl font-serif italic"
+            style={{ color: '#222222' }}
           >
             {phases[currentPhase]}
           </motion.p>
         </AnimatePresence>
-
-        {/* Subtle loading indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="flex justify-center mt-8 space-x-1"
-        >
-          {[0, 1, 2].map((i) => (
-            <motion.div
-              key={i}
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.3, 1, 0.3],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Number.POSITIVE_INFINITY,
-                delay: i * 0.2,
-              }}
-              className="w-2 h-2 bg-gray-400 rounded-full"
-            />
-          ))}
-        </motion.div>
       </div>
     </div>
   )
