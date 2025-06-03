@@ -22,7 +22,7 @@ interface InteractiveTimelineProps {
 
 export default function InteractiveTimeline({ milestones, onReset }: InteractiveTimelineProps) {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ background: '#FAF8F4' }}>
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
@@ -44,7 +44,7 @@ export default function InteractiveTimeline({ milestones, onReset }: Interactive
           className="absolute left-1/2 transform -translate-x-1/2 w-0.5 hidden md:block"
           style={{
             top: 0,
-            bottom: '60px', // Reduce padding so the line ends just above the gray line
+            bottom: '60px',
             backgroundColor: '#EE8838',
             zIndex: 0,
             borderRadius: '2px',
@@ -56,7 +56,7 @@ export default function InteractiveTimeline({ milestones, onReset }: Interactive
           className="absolute left-8 w-0.5 md:hidden"
           style={{
             top: 0,
-            bottom: '60px', // Reduce padding for mobile as well
+            bottom: '60px',
             backgroundColor: '#EE8838',
             zIndex: 0,
             borderRadius: '2px',
@@ -73,7 +73,7 @@ export default function InteractiveTimeline({ milestones, onReset }: Interactive
                 style={{
                   left: index % 2 === 0 ? '50%' : undefined,
                   right: index % 2 !== 0 ? '50%' : undefined,
-                  width: '60px', // Short dotted line
+                  width: '60px',
                   height: '1px',
                   borderTop: '2px dotted #EE8838',
                   zIndex: 1,
@@ -93,18 +93,20 @@ export default function InteractiveTimeline({ milestones, onReset }: Interactive
           ))}
         </div>
 
-        {/* Bottom CTA */}
+        {/* Bottom CTA - moved to the right of the timeline, gray line removed */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mt-20 pt-12 border-t border-gray-200"
+          className="mt-20 pt-12 flex justify-center items-start"
         >
-          <p className="text-gray-600 mb-6">Want to explore a different timeline?</p>
-          <button onClick={onReset} className="text-black hover:text-gray-600 transition-colors underline text-lg">
-            Start over
-          </button>
+          <div style={{ marginLeft: 'calc(50% + 32px)', textAlign: 'left' }}>
+            <p className="text-gray-600 mb-2">Want to explore a different timeline?</p>
+            <button onClick={onReset} className="text-black hover:text-gray-600 transition-colors underline text-lg">
+              Start over
+            </button>
+          </div>
         </motion.div>
       </div>
     </div>
